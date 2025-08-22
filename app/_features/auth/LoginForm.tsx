@@ -15,15 +15,7 @@ export default function LoginForm() {
       .max(250, "Email length must be up to 250 characters!"),
     password: z
       .string()
-      .min(8, "Password must be at least 8 characters long!")
-      .max(250, "Password must be up to 250 characters!")
-      .refine(
-        (value) =>
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-            value ?? ""
-          ),
-        "Please enter valid password!"
-      ),
+      .min(1, "Password field is required!"),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
